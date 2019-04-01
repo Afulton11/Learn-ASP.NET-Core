@@ -4,22 +4,22 @@ namespace DatabaseFactory.Data.Contracts
     public interface IRepsoitory<TEntity> where TEntity : IEntity
     {
         /// <summary>
-        /// Get the <typeparamref name="TEntity"/> whose primaryKey equals <paramref name="primaryKey"/>.
+        /// Get the entity whose PrimaryKey equals the given PrimaryKey.
         /// </summary>
         /// <returns>The get.</returns>
-        /// <param name="primaryKey">Primary key.</param>
+        /// <param name="primaryKey">The entitiy's Primary Key</param>
         TEntity Get(object primaryKey);
 
         /// <summary>
         /// Save the specified entity.
         /// </summary>
-        /// <param name="entity">Entity.</param>
+        /// <param name="entity">The entity to update</param>
         void Save(TEntity entity);
 
         /// <summary>
-        /// Delete the specified entity.
+        /// Deletes the specified entity.
         /// </summary>
-        /// <param name="entity">Entity.</param>
+        /// <param name="entity">The Entity to delete.</param>
         void Delete(TEntity entity);
     }
 }
