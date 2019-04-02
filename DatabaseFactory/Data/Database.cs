@@ -1,12 +1,20 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.Data;
 using DatabaseFactory.Config;
+using DatabaseFactory.Data.Contracts;
+using Microsoft.Extensions.Options;
 
 namespace DatabaseFactory.Data
 {
-    public abstract class Database
+    public abstract class Database : IDatabase
     {
-        public DatabaseConfiguration Configuration { get; set; }
+        protected readonly IOptions<DatabaseOptions> options;
+
+        public Database(IOptions<DatabaseOptions> options)
+        {
+            this.options = options;
+        }
 
         public abstract IDbConnection CreateConnection();
         public abstract IDbCommand CreateCommand();

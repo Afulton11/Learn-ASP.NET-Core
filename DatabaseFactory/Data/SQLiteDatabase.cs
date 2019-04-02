@@ -1,11 +1,18 @@
 ﻿using System;
 using System.Data;
+using DatabaseFactory.Config;
 using Microsoft.Data.Sqlite;
+using Microsoft.Extensions.Options;
 
 namespace DatabaseFactory.Data
 {
     public class SQLiteDatabase : Database
     {
+        public SQLiteDatabase(IOptions<DatabaseOptions> options)
+            : base(options)
+        {
+        }
+
         public override IDbCommand CreateCommand() =>
             new SqliteCommand();
 
