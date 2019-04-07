@@ -1,7 +1,18 @@
-﻿namespace DatabaseFactory.Config
+﻿using System;
+namespace DatabaseFactory.Config
 {
-    public class DatabaseOptions
+    public abstract class DatabaseOptions
     {
+
+        protected DatabaseOptions()
+        {
+        }
+
         public string ConnectionString { get; set; }
+
+        /// <summary>
+        /// The type of context that these options are for.
+        /// </summary>
+        public abstract Type ContextType { get; }
     }
 }

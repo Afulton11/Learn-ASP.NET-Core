@@ -1,18 +1,32 @@
 ﻿using System;
-using System.ComponentModel.DataAnnotations;
 using System.Data;
+using System.Reflection;
 using DatabaseFactory.Config;
 using DatabaseFactory.Data.Contracts;
-using Microsoft.Extensions.Options;
+using EnsureThat;
 
 namespace DatabaseFactory.Data
 {
     public abstract class Database : IDatabase
     {
-        protected readonly IOptions<DatabaseOptions> options;
+        protected readonly DatabaseOptions options;
 
-        public Database(IOptions<DatabaseOptions> options)
+        protected Database()
+            : this(new DatabaseOptions<Database>())
         {
+        }
+
+        protected Database(DatabaseOptions options)
+        {
+            EnsureArg.IsNotNull(options, nameof(options));
+
+            if (!options.ContextType.GetTypeInfo().IsAssignableFrom(GetType().GetTypeInfo()))
+            {
+                throw new InvalidOperationException(
+$@"parameter {nameof(options)} must be assignable from {GetType().GetTypeInfo().FullName}!"
+                    );
+            }
+
             this.options = options;
         }
 

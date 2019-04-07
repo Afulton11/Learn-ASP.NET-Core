@@ -1,21 +1,21 @@
 ﻿using System;
+using DatabaseFactory.Data;
+using DatabaseFactory.Data.Contracts;
+
 namespace DatabaseFactory.Config.Builder
 {
     public interface IDatabaseOptionsBuilder
     {
         /// <summary>
-        /// Builds a SQLite database instance with the given connectionString.
+        /// Builds a SQLite connection string from the given dataSource.
+        /// Creates the source file if it doesn't already exist.
         /// </summary>
-        /// <param name="connectionString">The string to connect to the server</param>
-        IDatabaseOptionsBuild useSqliteServer(string connectionString);
-    }
+        /// <param name="dataSource">The path to the sqlite data source</param>
+        void UseSqliteDataSource(string dataSource);
 
-    public interface IDatabaseOptionsBuild
-    {
         /// <summary>
-        /// Creates a new instance of the <see cref="DatabaseOptions"/> class that configues the Database.
-        /// </summary>
-        /// <returns>A new <see cref="DatabaseOptions"/> instance</returns>
-        DatabaseOptions Build();
+        /// Builds a SQL Server database isntance from the given connectionString.
+        /// <param name="connectionString">The url to connect to the sql database</param>
+        void UseSqlServer(string connectionString);
     }
 }

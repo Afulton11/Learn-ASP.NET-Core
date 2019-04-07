@@ -1,24 +1,24 @@
 ﻿using System;
 using System.Data;
+using System.Data.SqlClient;
 using DatabaseFactory.Config;
-using Microsoft.Data.Sqlite;
+using Microsoft.Extensions.Options;
 
 namespace DatabaseFactory.Data
 {
-    public class SQLiteDatabase : Database
+    public class SQLDatabase : Database
     {
-        public SQLiteDatabase()
-            : this(new DatabaseOptions<SQLiteDatabase>())
+        public SQLDatabase()
+            : this(new DatabaseOptions<SQLDatabase>())
         {
         }
 
-        public SQLiteDatabase(DatabaseOptions options)
-            : base(options)
+        public SQLDatabase(DatabaseOptions options) : base(options)
         {
         }
 
         public override IDbCommand CreateCommand() =>
-            new SqliteCommand();
+            new SqlCommand();
 
         public override IDbCommand CreateCommand(string commandText, IDbConnection connection)
         {
@@ -30,7 +30,7 @@ namespace DatabaseFactory.Data
         }
 
         public override IDataParameter CreateParameter(string parameterName, object parameterValue) =>
-            new SqliteParameter(parameterName, parameterValue);
+            new SqlParameter(parameterName, parameterValue);
 
         public override IDbCommand CreateStoredProcCommand(string procName, IDbConnection connection)
         {
@@ -43,7 +43,7 @@ namespace DatabaseFactory.Data
         }
 
         public override IDbConnection CreateConnection() =>
-            new SqliteConnection(options.ConnectionString);
+            new SqlConnection(options.ConnectionString);
 
         public override IDbConnection CreateOpenConnection()
         {

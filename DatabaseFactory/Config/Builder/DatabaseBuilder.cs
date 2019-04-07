@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Reflection;
+using DatabaseFactory.Config.Exceptions;
 using DatabaseFactory.Data.Contracts;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -20,8 +22,12 @@ namespace DatabaseFactory.Config.Builder
 
         public IDatabase Build()
         {
-            // TODO add a 'ContextType' parameter to DatabaseOptions and use this instead.
-            _serviceCollection.AddDatabase(typeof(Data.SQLiteDatabase), _databaseOptions);
+            if (!typeof(IDatabase).IsAssignableFrom(_databaseOptions.contextType))
+            {
+                throw new DatabaseTypeMismatchException(_databaseOptions.contextType, typeof(IDatabase));
+            }
+
+            _serviceCollection.AddDatabase(_databaseOptions.contextType, _databaseOptions);
 
             var serviceProvider = _serviceCollection.BuildServiceProvider();
 
@@ -29,7 +35,7 @@ namespace DatabaseFactory.Config.Builder
 
             return client;
         }
-
-
     }
+
+
 }
