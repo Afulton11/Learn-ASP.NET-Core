@@ -1,0 +1,69 @@
+USE SimpleDatabase;
+GO
+
+DROP TABLE IF EXISTS Blog.Points;
+DROP TABLE IF EXISTS Blog.Users;
+DROP TABLE IF EXISTS Blog.Roles;
+DROP TABLE IF EXISTS Blog.PointReasons;
+GO
+
+DROP SCHEMA IF EXISTS Blog;
+GO
+
+CREATE SCHEMA Blog;
+GO
+
+CREATE TABLE Blog.Roles
+(
+    RoleID INT NOT NULL IDENTITY(1, 1) PRIMARY KEY,
+    Name NVARCHAR(32),
+);
+GO
+
+CREATE TABLE Blog.Users
+(
+    UserID INT NOT NULL IDENTITY(1, 1) PRIMARY KEY,
+    RoleID INT NOT NULL,
+    Username NVARCHAR(64) NOT NULL,
+    Password NVARCHAR(256) NOT NULL,
+    Salt NVARCHAR(256) NOT NULL,
+    Email NVARCHAR(128) NOT NULL,
+    IsEmailVerified BIT NOT NULL DEFAULT(0),
+    CreatedOn DATETIME2 NOT NULL DEFAULT(SYSUTCDATETIME()),
+    LastUpdateUserID INT NOT NULL,
+    LastUpdatedOn DATETIME2 NOT NULL DEFAULT(SYSUTCDATETIME()),
+    DeletedOn DATETIME2 NOT NULL,
+
+    FOREIGN KEY (RoleID)
+        REFERENCES Blog.Roles,
+);
+GO
+
+-- Add table reference to self
+ALTER TABLE Blog.Users ADD 
+    FOREIGN KEY (LastUpdateUserID)
+        REFERENCES Blog.Users;
+GO
+
+CREATE TABLE Blog.PointReasons
+(
+    PointReasonID INT NOT NULL IDENTITY(1, 1) PRIMARY KEY,
+    Reason NVARCHAR(256) NOT NULL,
+);
+GO
+
+CREATE TABLE Blog.Points
+(
+    PointID INT NOT NULL IDENTITY(1, 1) PRIMARY KEY,
+    UserID INT NOT NULL,
+    ReasonID INT NOT NULL,
+    PointValue INT NOT NULL,
+    CreatedOn DATETIME2 NOT NULL DEFAULT(SYSUTCDATETIME()),
+    ExipresOn DATETIME2 NOT NULL DEFAULT(SYSUTCDATETIME()),
+
+    FOREIGN KEY (UserID)
+        REFERENCES Blog.Users,
+    FOREIGN KEY (ReasonID)
+        REFERENCES Blog.PointReasons,
+);
+GO
