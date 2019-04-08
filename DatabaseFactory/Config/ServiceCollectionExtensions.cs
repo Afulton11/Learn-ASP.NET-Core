@@ -78,7 +78,7 @@ namespace DatabaseFactory.Config
             }
 
             // register database dependencies
-            AddCoreDatabaseServices<TContextImpl>(services, contextLifetime, optionsLifetime);
+            AddCoreDatabaseServices<TContextImpl>(services, optionsAction, optionsLifetime);
 
             // register the database now that dependencies can be found by DI
             services.TryAdd(
