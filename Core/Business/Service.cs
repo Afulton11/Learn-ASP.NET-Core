@@ -1,15 +1,42 @@
 ﻿using System;
 namespace Core.Business
 {
-    public class Service : IService
+    public abstract class Service : IService
     {
-        public Service()
+
+        #region IDisposable Support
+        private bool isDisposed = false; // To detect redundant calls
+
+        protected virtual void FreeManagedResources() {}
+        protected virtual void FreeUnmanagedResources() {}
+
+        private void Dispose(bool disposing)
         {
+            if (!isDisposed)
+            {
+                if (disposing)
+                {
+                    FreeManagedResources();
+                }
+
+                FreeUnmanagedResources();
+
+                isDisposed = true;
+            }
+        }
+
+        ~Service()
+        {
+            // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
+            Dispose(false);
         }
 
         public void Dispose()
         {
-            throw new NotImplementedException();
+            // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
+            Dispose(true);
+            GC.SuppressFinalize(this);
         }
+        #endregion
     }
 }
