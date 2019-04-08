@@ -7,7 +7,6 @@ using DatabaseFactory.Data.Contracts;
 using EnsureThat;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
-using Microsoft.Extensions.Options;
 
 namespace DatabaseFactory.Config
 {

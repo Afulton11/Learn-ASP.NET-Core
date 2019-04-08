@@ -29,6 +29,15 @@ namespace DatabaseFactory.Data
             return cmd;
         }
 
+        public override IDbCommand CreateCommand(string commandText, IDbTransaction transaction)
+        {
+            var cmd = CreateCommand();
+            cmd.CommandText = commandText;
+            cmd.Transaction = transaction;
+
+            return cmd;
+        }
+
         public override IDataParameter CreateParameter(string parameterName, object parameterValue) =>
             new SqliteParameter(parameterName, parameterValue);
 
@@ -37,6 +46,16 @@ namespace DatabaseFactory.Data
             var cmd = CreateCommand();
             cmd.CommandText = procName;
             cmd.Connection = connection;
+            cmd.CommandType = CommandType.StoredProcedure;
+
+            return cmd;
+        }
+
+        public override IDbCommand CreateStoredProcCommand(string procName, IDbTransaction transaction)
+        {
+            var cmd = CreateCommand();
+            cmd.CommandText = procName;
+            cmd.Transaction = transaction;
             cmd.CommandType = CommandType.StoredProcedure;
 
             return cmd;

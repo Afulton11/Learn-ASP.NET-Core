@@ -7,7 +7,7 @@ using Microsoft.Data.Sqlite;
 namespace DatabaseFactory.Config.Builder
 {
     public sealed class DatabaseOptionsBuilder<TContext> :
-        IDatabaseOptionsBuilder,
+        IDatabaseOptionsBuilder
         where TContext : Database
     {
         private readonly DatabaseOptions<TContext> _options = new DatabaseOptions<TContext>();
