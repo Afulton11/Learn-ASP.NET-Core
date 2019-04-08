@@ -28,12 +28,16 @@
     <Folder Include="Business\" />
     <Folder Include="Entities\Dbo\" />
     <Folder Include="Business\Contracts\" />
+    <Folder Include="Entities\Blog\" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Entities\IAudibleEntity.cs" />
     <Compile Include="Entities\IEntity.cs" />
     <Compile Include="Business\Service.cs" />
     <Compile Include="Business\Contracts\IService.cs" />
+    <Compile Include="Entities\Blog\Role.cs" />
+    <Compile Include="Entities\Blog\User.cs" />
+    <Compile Include="Entities\Blog\PointReason.cs" />
+    <Compile Include="Entities\Blog\Point.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
