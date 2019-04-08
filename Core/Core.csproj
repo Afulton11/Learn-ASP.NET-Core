@@ -29,6 +29,9 @@
     <Folder Include="Entities\Dbo\" />
     <Folder Include="Business\Contracts\" />
     <Folder Include="Entities\Blog\" />
+    <Folder Include="Data\Commands\" />
+    <Folder Include="Data\Queries\" />
+    <Folder Include="Data\Validators\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\IEntity.cs" />
@@ -38,6 +41,12 @@
     <Compile Include="Entities\Blog\User.cs" />
     <Compile Include="Entities\Blog\PointReason.cs" />
     <Compile Include="Entities\Blog\Point.cs" />
+    <Compile Include="Business\Contracts\IHandleCommand.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true' " />
+    <Compile Include="Business\Contracts\IHandleQuery.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true' " />
+    <Compile Include="Business\Contracts\IValidator.cs" />
+    <Compile Include="Data\IQueryProcessor.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true' " />
+    <Compile Include="Data\Queries\IQuery.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true' " />
+    <Compile Include="Data\Commands\ICommand.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true' " />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
