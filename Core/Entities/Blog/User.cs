@@ -4,6 +4,7 @@ namespace Core.Entities.Blog
 {
     public class User : IEntity
     {
+        public int UserId { get; set; }
         public Role Role { get; set; }
         public string Username { get; set; }
         public string Email { get; set; }

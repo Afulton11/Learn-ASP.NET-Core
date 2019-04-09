@@ -1,4 +1,4 @@
-
+﻿
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>Library</OutputType>
@@ -6,15 +6,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Folder Include="Entities\" />
-    <Folder Include="Data\" />
-    <Folder Include="Business\" />
     <Folder Include="Entities\Dbo\" />
     <Folder Include="Business\Contracts\" />
     <Folder Include="Entities\Blog\" />
-    <Folder Include="Data\Commands\" />
     <Folder Include="Data\Queries\" />
     <Folder Include="Data\Validators\" />
-    <Folder Include="Business\CommandHandlers\" />
     <Folder Include="Business\QueryHandlers\" />
     <Folder Include="Business\CommandHandlers\Decorators\" />
     <Folder Include="Business\QueryHandlers\Decorators\" />
@@ -40,10 +36,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="System.ComponentModel.Annotations">
-      <HintPath>..\packages\System.ComponentModel.Annotations.4.5.0\lib\net461\System.ComponentModel.Annotations.dll</HintPath>
-    </Reference>
-    <Reference Include="mscorlib" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="2.2.0" />
+    <PackageReference Include="System.ComponentModel" Version="4.3.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DatabaseFactory\DatabaseFactory.csproj" />
   </ItemGroup>
 </Project>
