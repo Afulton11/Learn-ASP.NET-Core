@@ -16,23 +16,6 @@
     <Folder Include="Business\QueryHandlers\Decorators\" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Entities\IEntity.cs" />
-    <Compile Include="Business\Service.cs" />
-    <Compile Include="Business\Contracts\IService.cs" />
-    <Compile Include="Entities\Blog\Role.cs" />
-    <Compile Include="Entities\Blog\User.cs" />
-    <Compile Include="Entities\Blog\PointReason.cs" />
-    <Compile Include="Entities\Blog\Point.cs" />
-    <Compile Include="Business\Contracts\IHandleCommand.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true' " />
-    <Compile Include="Business\Contracts\IHandleQuery.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true' " />
-    <Compile Include="Business\Contracts\IValidator.cs" />
-    <Compile Include="Data\IQueryProcessor.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true' " />
-    <Compile Include="Data\Queries\IQuery.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true' " />
-    <Compile Include="Data\Commands\ICommand.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true' " />
-    <Compile Include="Data\Validators\ValidatorObject.cs" />
-    <Compile Include="Data\Validators\CompositeValidationResult.cs" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
