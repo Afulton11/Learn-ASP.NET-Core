@@ -7,7 +7,6 @@
   <ItemGroup>
     <Folder Include="Entities\" />
     <Folder Include="Entities\Dbo\" />
-    <Folder Include="Business\Contracts\" />
     <Folder Include="Entities\Blog\" />
     <Folder Include="Data\Queries\" />
     <Folder Include="Data\Validators\" />

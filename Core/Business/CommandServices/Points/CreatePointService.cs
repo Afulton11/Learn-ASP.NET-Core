@@ -2,11 +2,11 @@
 using DatabaseFactory.Data;
 using Microsoft.Extensions.Logging;
 
-namespace Core.Business.CommandHandlers.Points
+namespace Core.Business.CommandServices.Points
 {
-    public abstract class CreatePointCommandHandler : CommandHandler<CreatePointCommand>
+    public abstract class CreatePointService : CommandService<CreatePointCommand>
     {
-        protected CreatePointCommandHandler(ILogger logger, Database database) : base(logger)
+        protected CreatePointService(ILogger logger, Database database) : base(logger)
         {
             Database = database;
         }
@@ -14,7 +14,7 @@ namespace Core.Business.CommandHandlers.Points
         protected abstract string ProcedureName { get; }
         protected Database Database { get; }
 
-        public override void Handle(CreatePointCommand command)
+        public override void Execute(CreatePointCommand command)
         {
             Database.TryExecuteTransaction((transaction) =>
             {
