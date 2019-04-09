@@ -7,7 +7,7 @@ VALUES
     (N'Favorited a comment'),
     (N'Commented on an article'),
     (N'Replied to a new comment thread'),
-    (N'Been on the website for atleast 10 minutes');
+    (N'Visited website')
 
 SELECT *
 FROM Blog.PointReasons;
