@@ -20,8 +20,6 @@ namespace Core.Business.CommandServices.Decorators
 
         public void Execute(TCommand command)
         {
-            // TransactionScope allows and DbTransaction created during the lifetime of this
-            // scope is automatically enlisted into the same transaction.
             using (var transactionScope = new TransactionScope())
             {
                 this.decoratee.Execute(command);
