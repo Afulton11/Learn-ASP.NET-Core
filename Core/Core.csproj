@@ -10,9 +10,8 @@
     <Folder Include="Entities\Blog\" />
     <Folder Include="Data\Queries\" />
     <Folder Include="Data\Validators\" />
-    <Folder Include="Business\QueryHandlers\" />
-    <Folder Include="Business\CommandHandlers\Decorators\" />
-    <Folder Include="Business\QueryHandlers\Decorators\" />
+    <Folder Include="Business\QueryServices\" />
+    <Folder Include="Business\QueryServices\Decorators\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
