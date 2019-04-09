@@ -1,5 +1,5 @@
 # Learn-ASP.NET-Core
-A Repository I created while learning ASP.Net Core
+A Repository I created while learning ASP.Net Core. As of right now the `master` branch is not using Entity Framework Core. In the future, I may create a separate branch that has the same functionality as the current `master` branch, but uses EF Core.
 
 Database queries and commands	
 ===	
