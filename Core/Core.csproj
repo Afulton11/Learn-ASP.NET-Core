@@ -2,7 +2,7 @@
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <ProjectGuid>{A7103ED4-239C-49F2-93D6-C91F19183D10}</ProjectGuid>
-    <OutputType>Exe</OutputType>
+    <OutputType>Library</OutputType>
     <RootNamespace>Core</RootNamespace>
     <AssemblyName>Core</AssemblyName>
     <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
@@ -32,6 +32,10 @@
     <Folder Include="Data\Commands\" />
     <Folder Include="Data\Queries\" />
     <Folder Include="Data\Validators\" />
+    <Folder Include="Business\CommandHandlers\" />
+    <Folder Include="Business\QueryHandlers\" />
+    <Folder Include="Business\CommandHandlers\Decorators\" />
+    <Folder Include="Business\QueryHandlers\Decorators\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\IEntity.cs" />
@@ -47,6 +51,18 @@
     <Compile Include="Data\IQueryProcessor.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true' " />
     <Compile Include="Data\Queries\IQuery.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true' " />
     <Compile Include="Data\Commands\ICommand.cs" Condition=" '$(EnableDefaultCompileItems)' == 'true' " />
+    <Compile Include="Data\Validators\ValidatorObject.cs" />
+    <Compile Include="Data\Validators\CompositeValidationResult.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.ComponentModel.Annotations">
+      <HintPath>..\packages\System.ComponentModel.Annotations.4.5.0\lib\net461\System.ComponentModel.Annotations.dll</HintPath>
+    </Reference>
+    <Reference Include="mscorlib" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
