@@ -1,31 +1,33 @@
 ﻿using Core.Data.Commands;
 using DatabaseFactory.Data;
-using Microsoft.Extensions.Logging;
+using DatabaseFactory.Data.Contracts;
+using EnsureThat;
 
 namespace Core.Business.CommandServices.Points
 {
-    public abstract class CreatePointService : CommandService<CreatePointCommand>
+    public abstract class CreatePointService : ICommandService<CreatePointCommand>
     {
-        protected CreatePointService(ILogger logger, Database database) : base(logger)
+        protected CreatePointService(IDatabase database)
         {
+            EnsureArg.IsNotNull(database, nameof(database));
+
             Database = database;
         }
 
         protected abstract string ProcedureName { get; }
-        protected Database Database { get; }
+        protected IDatabase Database { get; }
 
-        public override void Execute(CreatePointCommand command)
+        public void Execute(CreatePointCommand command)
         {
             Database.TryExecuteTransaction((transaction) =>
             {
                 var procedure = Database.CreateStoredProcCommand(ProcedureName, transaction);
-                var userIdParameter = Database.CreateParameter("userId", command.UserId);
+                var userIdParameter = Database.CreateParameter("UserId", command.UserId);
 
                 procedure.Parameters.Add(userIdParameter);
 
                 Database.Execute(procedure);
             });
-            Logger.LogInformation($"{this.GetType().Name} has been executed successfully.");
         }
 
     }

@@ -1,13 +1,10 @@
-﻿using DatabaseFactory.Data;
-using Microsoft.Extensions.Logging;
+﻿using DatabaseFactory.Data.Contracts;
 
 namespace Core.Business.CommandServices.Points
 {
     public class CreatePointForVisitingSiteService : CreatePointService
     {
-        public CreatePointForVisitingSiteService(
-            ILogger<CreatePointForVisitingSiteService> logger,
-            Database database) : base(logger, database)
+        public CreatePointForVisitingSiteService(IDatabase database) : base(database)
         {
         }
 
