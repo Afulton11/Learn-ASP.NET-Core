@@ -16,7 +16,7 @@ END;
 GO
 
 CREATE OR ALTER PROCEDURE Blog.CreatePointForVisitingSite(
-    @userId INT
+    @UserId INT
 ) 
 AS
 BEGIN
@@ -25,6 +25,6 @@ BEGIN
     
     INSERT INTO Blog.Points(UserID, ReasonID, PointValue, ExipresOn)
     VALUES 
-        (@userId, @ReasonID, 2, @ExpiresOn)
+        (@UserId, @ReasonID, 2, @ExpiresOn)
 END;
 GO
