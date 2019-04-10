@@ -34,10 +34,6 @@ namespace Web
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            // Register logger for commandHandlers
-            services.AddScoped<ILogger, Logger<CommandHandler<ICommand>>>();
-
-
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }
 
